@@ -1,0 +1,15 @@
+{
+  "generator-ui5-ts-app": {
+    "application": "MyApp",
+    "namespace": "MyApp",
+    "framework": "SAPUI5",
+    "frameworkVersion": "1.96.17",
+    "author": "João Vitor",
+    "initrepo": true,
+    "tstypes": "@sapui5/ts-types-esm",
+    "tstypesVersion": "1.96.17",
+    "appId": "MyApp.MyApp",
+    "appURI": "MyApp/MyApp",
+    "setupCompleted": true
+  }
+}
