@@ -1,6 +1,5 @@
 {
 	"_version": "1.12.0",
-
 	"sap.app": {
 		"id": "MyApp.MyApp",
 		"type": "application",
@@ -11,19 +10,24 @@
 			"version": "1.0.0"
 		}
 	},
-
+	"dataSources": {
+		"default": {
+			"uri": "https://api.coingecko.com/api/v3",
+			"type": "OData",
+			"settings": {
+				"odataVersion": "4.0"
+			}
+		}
+	},
 	"sap.ui": {
 		"technology": "UI5",
-		"icons": {
-
-		},
+		"icons": {},
 		"deviceTypes": {
 			"desktop": true,
 			"tablet": true,
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "MyApp.MyApp.view.App",
@@ -31,7 +35,6 @@
 			"async": true,
 			"id": "app"
 		},
-
 		"dependencies": {
 			"minUI5Version": "1.96.17",
 			"libs": {
@@ -41,14 +44,11 @@
 				"sap.m": {}
 			}
 		},
-
 		"handleValidation": true,
-
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
 		},
-
 		"models": {
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
@@ -57,27 +57,46 @@
 				}
 			}
 		},
-
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
+				"type": "View",
 				"viewType": "XML",
 				"viewPath": "MyApp.MyApp.view",
+				"path": "MyApp.MyApp.view",
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"async": true
 			},
 			"routes": [
 				{
+					"pattern":"",
+					"name":"main",
+					"target":"main"
+				},
+				{
 					"pattern": "",
-					"name": "main",
-					"target": "main"
+					"name": "overview",
+					"target": "overview"
+				},
+				{
+					"pattern": "detail",
+					"name": "detail",
+					"target": "detail"
 				}
 			],
 			"targets": {
 				"main": {
-					"viewId": "main",
-					"viewName": "Main"
+					"id": "main",
+					"name":"Main"
+				},
+				"overview": {
+					"id": "overview",
+					"name": "Overview"
+				},
+				"detail": {
+					"id": "detail",
+					"name": "Detail"
 				}
 			}
 		}

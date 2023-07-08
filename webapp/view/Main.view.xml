@@ -1,20 +1,172 @@
 <mvc:View
 	controllerName="MyApp.MyApp.controller.Main"
-	displayBlock="true"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<ScrollContainer height="100%" width="100%" vertical="true" horizontal="false">
+	<Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: 'users>/',
+			sorter: {
+				path: 'users>name'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Products" level="H2"/>
+					<ToolbarSpacer />
+					<ComboBox id="idPopinLayout"
+						placeholder="Popin layout options"
+						change="onPopinLayoutChanged">
+						<items>
+							<core:Item  text="Block"
+								key="Block"/>
+							<core:Item  text="Grid Large"
+								key="GridLarge"/>
+							<core:Item  text="Grid Small"
+								key="GridSmall"/>
+						</items>
+					</ComboBox>
+					<Label text="Sticky options:" />
+					<CheckBox text="ColumnHeaders"
+						select="onSelect"/>
+					<CheckBox text="HeaderToolbar"
+						select="onSelect"/>
+					<CheckBox text="InfoToolbar"
+						select="onSelect"/>
+					<ToggleButton id="toggleInfoToolbar"
+						text="Hide/Show InfoToolbar"
+						press="onToggleInfoToolbar" />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Wide range of available products"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Name" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="Email" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Initial">
+				<Text text="CreateAt" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Initial">
+				<Text text="UpdateAt" />
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="IsActive" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier
+						title="{users>name}"
+						text="{users>name}"/>
+					<Text
+						text="{users>email}" />
+					<Text
+						text="{users>createAt}" />
+					<ObjectNumber
+						number="{users>updateAt}"
+						unit="{users>updateAt}"
+						state="{
+							parts: [
+								{path: 'WeightMeasure'},
+								{path: 'WeightUnit'}
+							],
+							formatter: 'sap.m.sample.Table.Formatter.weightState'
+						}" />
+					<ObjectNumber
+							number="{
+								parts:[{path:'Price'},{path:'CurrencyCode'}],
+								type: 'sap.ui.model.type.Currency',
+								formatOptions: {showMeasure: false}
+							}"
+							unit="{users>isActive}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</ScrollContainer>
+</mvc:View>
 
-	<MessagePage
+<!-- <mvc:View
+    controllerName="MyApp.MyApp.controller.Main"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+
+<List items="{modelName>/name}">
+  <StandardListItem
+    title="{name}"
+    description="{modelName>name}" />
+</List> -->
+
+    <!-- <List
+        id="invoiceList"
+        class="sapUiResponsiveMargin"
+        width="auto"
+        items="{
+			path : 'user>/Users',
+			sorter : {
+				path : 'ShipperName',
+				group : true
+			}
+		}"
+    >
+        <items>
+            <ObjectListItem title="{view>/name}" />
+        </items>
+    </List> -->
+
+    <!-- 
+    <ObjectListItem
+        type="Navigation"
+        press="onPress"
+    /> -->
+
+    <!-- <mvc:XMLView viewName="MyApp.MyApp.view.Overview" /> -->
+    <!-- <mvc:XMLView viewName="MyApp.MyApp.view.InvoiceList"/> -->
+
+    <!-- <MessagePage
 		title="{i18n>appTitle}"
 		text="{i18n>appTitle}"
 		icon="sap-icon://accept"
 		id="page"
 		description="{i18n>appDescription}">
+
+
+		
 		<buttons>
 			<Button
 				text="{i18n>btnText}"
 				press="sayHello" />
+			<Button
+				text="Gecko"
+				press="sayGecko" />
+			<Button 
+				text="Navigation"
+				press="onPress"
+			/>
 		</buttons>
-	</MessagePage>
-
-</mvc:View>
+	</MessagePage> -->
+<!-- </mvc:View> -->
